@@ -4,6 +4,13 @@ Sub StockData()
 Dim WS As Worksheet
     For Each WS In ActiveWorkbook.Worksheets
     WS.Activate
+    
+     Dim Open_Price As Double
+     Dim Close_Price As Double
+     Dim Yearly_Change As Double
+     Dim Ticker_Name As String
+     Dim Percent_Change As Double
+     Dim Volume As Double
        
         LastRow = WS.Cells(Rows.Count, 1).End(xlUp).Row
 
@@ -13,12 +20,7 @@ Dim WS As Worksheet
         Cells(1, "K").Value = "Percent Change"
         Cells(1, "L").Value = "Total Stock Volume"
       
-     Dim Open_Price As Double
-     Dim Close_Price As Double
-     Dim Yearly_Change As Double
-     Dim Ticker_Name As String
-     Dim Percent_Change As Double
-     Dim Volume As Double
+    
      Volume = 0
      Dim Row As Double
      Row = 2
@@ -49,7 +51,6 @@ Dim WS As Worksheet
                 Else
                     Percent_Change = Yearly_Change / Open_Price
                     Cells(Row, Column + 10).Value = Percent_Change
-                    Cells(Row, Column + 10).NumberFormat = "0.00%"
                 End If
                 
                 Volume = Volume + Cells(i, Column + 6).Value
@@ -71,7 +72,7 @@ Dim WS As Worksheet
        
         For j = 2 To YCLastRow
             If (Cells(j, Column + 9).Value > 0 Or Cells(j, Column + 9).Value = 0) Then
-                Cells(j, Column + 9).Interior.ColorIndex = 10
+                Cells(j, Column + 9).Interior.ColorIndex = 4
             ElseIf Cells(j, Column + 9).Value < 0 Then
                 Cells(j, Column + 9).Interior.ColorIndex = 3
             End If
