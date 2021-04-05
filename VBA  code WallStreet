@@ -1,5 +1,4 @@
-
-Sub StockData()
+Sub StockVBA()
    
 Dim WS As Worksheet
     For Each WS In ActiveWorkbook.Worksheets
@@ -11,6 +10,9 @@ Dim WS As Worksheet
      Dim Ticker_Name As String
      Dim Percent_Change As Double
      Dim Volume As Double
+     Dim Row As Double
+     Dim Column As Integer
+     Dim i As Long
        
         LastRow = WS.Cells(Rows.Count, 1).End(xlUp).Row
 
@@ -22,11 +24,9 @@ Dim WS As Worksheet
       
     
      Volume = 0
-     Dim Row As Double
      Row = 2
-     Dim Column As Integer
-        Column = 1
-        Dim i As Long
+     Column = 1
+        
         
         
         Open_Price = Cells(2, Column + 2).Value
