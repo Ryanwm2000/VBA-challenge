@@ -13,24 +13,19 @@ Dim WS As Worksheet
      Dim Row As Double
      Dim Column As Integer
      Dim i As Long
-       
-        LastRow = WS.Cells(Rows.Count, 1).End(xlUp).Row
-
+     LastRow = WS.Cells(Rows.Count, 1).End(xlUp).Row
+     Open_Price = Cells(2, Column + 2).Value
+  Volume = 0
+  Row = 2
+  Column = 1
+        
         
         Cells(1, "I").Value = "Ticker"
         Cells(1, "J").Value = "Yearly Change"
         Cells(1, "K").Value = "Percent Change"
         Cells(1, "L").Value = "Total Stock Volume"
       
-    
-     Volume = 0
-     Row = 2
-     Column = 1
-        
-        
-        
-        Open_Price = Cells(2, Column + 2).Value
-       
+  
         
         For i = 2 To LastRow
       
@@ -68,9 +63,9 @@ Dim WS As Worksheet
         Next i
         
         
-        YCLastRow = WS.Cells(Rows.Count, Column + 8).End(xlUp).Row
+        RowLast = WS.Cells(Rows.Count, Column + 8).End(xlUp).Row
        
-        For j = 2 To YCLastRow
+        For j = 2 To RowLast
             If (Cells(j, Column + 9).Value > 0 Or Cells(j, Column + 9).Value = 0) Then
                 Cells(j, Column + 9).Interior.ColorIndex = 4
             ElseIf Cells(j, Column + 9).Value < 0 Then
